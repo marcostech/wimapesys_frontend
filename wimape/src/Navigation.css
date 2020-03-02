@@ -1,28 +1,28 @@
-.Navbar{
-    display: flex;
-    flex-direction: row;    
-    align-items: center;
-    height: 5vh;
-}
-.Navbar-links-container{    
-    list-style: none;
+.Navbar{    
     display: flex;
     flex-direction: row;
-    padding-left: 0;
-    padding-bottom: 2vh;
-    margin: 0;    
+    height: 4vh;    
+    width: 100%;
+    align-items: center;
 }
-.Navbar-links{    
+.Navbar .container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-content: center;    
+    justify-content: space-evenly;
+}
+.Navbar .links{  
     text-decoration: none;
-    color:grey;
-    font-size: calc(0.5em + 1vw);   
-    margin-right: 20px; 
+    color:black;
+    font-size: calc(0.5em + 1vw); 
+    
 }
-.Navbar-links:focus{
+.Navbar .links:focus{
     outline: 0;
     border: none;
 }
-.Navbar-links:active{
+.Navbar .links:active{
     outline: 0;
     border-bottom: solid 2px;
 }

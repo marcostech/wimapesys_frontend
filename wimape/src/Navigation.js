@@ -5,12 +5,10 @@ import "./Navigation.css"
 function SamplePath() {    
     return (
         <div className="Navbar">
-            <nav>
-                <ul className="Navbar-links-container">
-                    <li><NavLink exact className="Navbar-links" to='/'>Dash Board</NavLink></li>
-                    <li><NavLink exact className="Navbar-links" to='/samplepath'>Pesquisa</NavLink></li>
-                    <li><NavLink exact className="Navbar-links" to='/samplepath2'>Cadastro</NavLink></li>
-                </ul>
+            <nav className="container">                
+                    <NavLink exact className="links" to='/'>Dash</NavLink>
+                    <NavLink exact className="links" to='/samplepath'>Pesquisa</NavLink>
+                    <NavLink exact className="links" to='/samplepath2'>Cadastro</NavLink>                
             </nav>
         </div>
     )

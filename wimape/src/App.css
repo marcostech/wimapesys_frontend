@@ -15,7 +15,8 @@
 }
 
 .App-header {
-  background: whitesmoke;
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(19,186,221,1) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +27,12 @@
   -webkit-box-shadow: 0px 6px 16px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 6px 16px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 6px 16px 0px rgba(0,0,0,0.75);
+  -webkit-border-top-left-radius:15px;
+    -moz-border-radius-topleft:15px;
+    border-top-left-radius:15px;
+    -webkit-border-top-right-radius:15px;
+    -moz-border-radius-topright:15px;
+    border-top-right-radius:15px;
 }
 
 .App-link {

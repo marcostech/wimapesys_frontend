@@ -15,20 +15,19 @@ function App() {
   return ( 
     <div className="App">
       <div className="App-header">        
+      <Navigation />
         <img src={logo} className="App-logo"  alt="logo" />
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          className= "App-link"
+          href= "https://github.com/marcostech"
+          target= "_blank"
+          rel= "noopener noreferrer"
         >
           Wimape System 0.0.1V
         </a>
         <p>
           Faça Login para começar.
-        </p>
-        
-        {/* <Navigation />*/}
+        </p>              
         <Main />
       </div>
       
