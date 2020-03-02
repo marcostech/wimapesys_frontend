@@ -1,1 +1,2 @@
-teste de vscode git2
+Wimapesys - frontend
+Responsive frontend design made with ReactJS.
