@@ -1,2 +1,2 @@
-Wimapesys - frontend
+Wimapesys - 
 Responsive frontend design made with ReactJS.
