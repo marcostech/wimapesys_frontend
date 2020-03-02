@@ -1,0 +1,64 @@
+
+.loginInputs{
+    line-height: 5vh;
+    border: 0;        
+    align-self: center;
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;    
+    padding: 10px;
+}
+.content-button{
+    -moz-box-shadow: 0px 0px 2px 0px #000000;
+    -webkit-box-shadow: 0px 0px 2px 0px #000000;
+    box-shadow: 0px 0px 2px 0px #000000;
+    background: linear-gradient(0deg, rgba(174,210,238,1) 0%, rgba(202,228,245,1) 10%, rgba(148,230,233,1) 49%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9');
+    background-color:none;
+
+    -webkit-border-top-left-radius:6px;
+    -moz-border-radius-topleft:6px;
+    border-top-left-radius:6px;
+    -webkit-border-top-right-radius:6px;
+    -moz-border-radius-topright:6px;
+    border-top-right-radius:6px;
+    -webkit-border-bottom-right-radius:6px;
+    -moz-border-radius-bottomright:6px;
+    border-bottom-right-radius:6px;
+    -webkit-border-bottom-left-radius:6px;
+    -moz-border-radius-bottomleft:6px;
+    border-bottom-left-radius:6px;    
+    border:1px solid #000000;
+
+    color:grey;
+    font-family:Arial;    
+    font-weight:bold;
+    font-style:normal;
+    text-decoration:none;
+    text-align:center;
+    font-size: calc(5px + 2vmin);
+
+    height: 7vmin;
+    width: 12vmax;
+    outline: none;
+    align-self: center;
+    margin-top: 10px;
+
+}
+.content-button:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #06ee38) );
+    background:-moz-linear-gradient( center top,#06ee38 5%,  #e9e9e9 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
+    background-color:#e9e9e9;
+    outline: none;
+}
+.content-button:active {
+    position:relative;
+    top:2px;
+    outline: none;
+}
