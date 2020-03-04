@@ -1,5 +1,5 @@
 import React from 'react'
-import api from "./services/api"
+//import api from "./services/api"
 import logo from "./images/logo.png"
 import './App.css';
 import Main from "./Main"

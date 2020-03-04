@@ -1,30 +1,64 @@
 import React from "react"
 import "./WimapeLogin.css"
+import api from "./services/api"
 
 class WimapeLogin extends React.Component {
     constructor(props){
         super(props)
         this.state ={
-            user: "",
-            password: "",
-            erroMsg: "Esqueci a senha"
+            user: "", //state do user input
+            password: "", //state do password input
+            erroMsg: "Esqueceu a senha?", //state para mensagens de erro
+            status: false //state de login status check
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this); //binds para usar a this nas funções
     }
-    handleChange(event) {
+
+    handleChange(event) { //atualizadores de state dos inputs
         const name = event.target.name;
-        this.setState({[name]: event.target.value});
+        this.setState( {[name]: event.target.value} ); 
     }
     
-    handleSubmit(event) {
-        
-        
-        if(0){ //boolean login test
+    handleSubmit(event) { //função para processar o submit do form de login
+        api.get(`/search`, { //axios api para BD
+            params: {
+                user: this.state.user //procura apenas o usuario e retorna todos os campos do documento
+            }
+        }).then(response =>{ //nested if para verificar se usuario existe, se senha esta correta ou não
+            if(response.data.user === undefined){
+                this.setState({erroMsg:"Usuario não encontrado!"}); //troca state da msg de erro
+                this.setState({status: false}); //altera state do check login
+                document.getElementsByClassName("error")[0].style.color="red"; //altera cor do texto de erro
+            }else {
+                if(response.data.password === this.state.password) {
+                    this.setState({erroMsg: "Esqueci a senha"}); //troca state da msg de erro
+                    this.setState({status: true}); //altera state do check login
+                    document.getElementsByClassName("error")[0].style.color="lightblue"; //altera cor do texto de erro
+                }else{
+                    this.setState({erroMsg:"Senha incorreta!"}); //troca state da msg de erro
+                    this.setState({status: false}); //altera state do check login
+                    document.getElementsByClassName("error")[0].style.color="red"; //altera cor do texto de erro
+                }
+            }
+            
+        }).catch(err => { //pega os erros do Banco de dados
+            this.setState({erroMsg:"check this -> "+err}); //troca state da msg de erro
+            this.setState({status: false}) //altera state do check login
+            document.getElementsByClassName("error")[0].style.color="red"; //altera cor do texto de erro
+            });
+
+        event.preventDefault();
+    }
+
+    handleLogin(){        
+        console.log(this.state.status)
+        if(this.state.status === false){ //boolean login test
+            console.log("erro de login");
             this.setState({erroMsg: "Usuário e/ou Senha incorreto(s)"});
-            document.getElementsByClassName("error")[0].style.color="red"
+        } else{            
+            document.getElementsByClassName("error")[0].style.color="lightblue";
         }
-        event.preventDefault(); 
     }
 
     render() {
@@ -57,7 +91,7 @@ class WimapeLogin extends React.Component {
                 <button className="content-button" type="submit">Cadastrar</button>
             </div>            
         </div>
-        <a className="error" href="">{this.state.erroMsg}</a>
+        <a className="error" href="/">{this.state.erroMsg}</a>
         </form>
     )}
 }
