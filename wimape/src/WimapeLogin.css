@@ -23,7 +23,8 @@
     
 }
 .error{
-    color: red;    
+    text-decoration: none;
+    color: lightblue;    
     font-size: calc(2px + 2vmin);
 }
 .content-button-holder{
