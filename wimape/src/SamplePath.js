@@ -6,22 +6,25 @@ constructor(props) {
     super(props)
     this.state = {
         teste: "teste"
-    }
+    }    
     }
 
-async dbtest() { //comunicação funcionando
-    await api.get(`/search`,
-    {params:{num_serie_teste:"1"}})
-    .then(resp=>{ this.setState( {teste: "deu"}) })
-    .catch(err => { this.setState( {teste: err}) })
+dbtest() { //comunicação funcionando
+    return "hello"
+    //api.get(`/search`,    {params:{num_serie_teste:"1"}}).then(resp=>{ console.log(resp.data);return resp.data.cod }).catch(err => { console.log(err)})
     } 
-handleChange = (prop) => {
-        this.setState({teste: prop})
-};
+handleChange = () => {
+    api.get(`/search`, {params:{num_serie_teste:"1"}}).then(response =>{
+        this.setState({teste: response.data.cod })
+    }).catch(err => {
+         console.log(err)}
+         )}
 
     //const responseData = dbtest().then( response => {return response.data}).catch(response => {return console.log(response)})
 render() { 
-    return ( <h1 onClick={this.handleChange("deu")}>{this.state.teste}</h1>
+    
+    return (
+        <h1 onClick={this.handleChange}> {this.state.teste} </h1>
     )
    }     
 }
