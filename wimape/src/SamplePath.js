@@ -9,10 +9,6 @@ constructor(props) {
     }    
     }
 
-dbtest() { //comunicação funcionando
-    return "hello"
-    //api.get(`/search`,    {params:{num_serie_teste:"1"}}).then(resp=>{ console.log(resp.data);return resp.data.cod }).catch(err => { console.log(err)})
-    } 
 handleChange = () => {
     api.get(`/search`, {params:{num_serie_teste:"1"}}).then(response =>{
         this.setState({teste: response.data.cod })
@@ -21,8 +17,7 @@ handleChange = () => {
          )}
 
     //const responseData = dbtest().then( response => {return response.data}).catch(response => {return console.log(response)})
-render() { 
-    
+render() {
     return (
         <h1 onClick={this.handleChange}> {this.state.teste} </h1>
     )
