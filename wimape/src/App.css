@@ -7,16 +7,15 @@
 }
 
 .App-logo {
-  height: 18vmax;
-  width: 20vmax;
+  height: 15vmax;
+  width: 100%;
   pointer-events: none;
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-pulse infinite 5s linear;
 }
 
 .App-header {
   background: rgb(255,255,255);
-  background: linear-gradient(180deg, rgba(12,93,124,1) 0%, rgba(44,160,201,1) 20%, rgba(50,119,144,1) 100%);
-  display: flex;
+  background: linear-gradient(180deg, rgba(200,219,226,1) 0%, rgba(230,248,250,1) 47%, rgba(152,166,172,1) 100%);  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -41,11 +40,10 @@
   text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes App-logo-pulse {
+  0% {opacity: 1;}
+  25% {opacity: 0.5;}  
+  50% {opacity: 0.8;}
+  100% {opacity: 1;}
+  
 }

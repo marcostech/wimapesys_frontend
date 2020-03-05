@@ -1,6 +1,6 @@
 import React from 'react'
 //import api from "./services/api"
-import logo from "./images/logo.png"
+import logo from "./images/luffe.png"
 import './App.css';
 import Main from "./Main"
 import Navigation from "./Navigation"
@@ -14,8 +14,7 @@ function App() {
   //dbtest();
   return ( 
     <div className="App">
-      <div className="App-header">        
-      <Navigation />
+      <div className="App-header">
         <img src={logo} className="App-logo"  alt="logo" />
         <a
           className= "App-link"
