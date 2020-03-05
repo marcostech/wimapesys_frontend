@@ -12,7 +12,8 @@ class WimapeLogin extends React.Component {
             status: false //state de login status check
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this); //binds para usar a this nas funções
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSignUp = this.handleSignUp.bind(this); //binds para usar a this nas funções
     }
 
     handleChange(event) { //atualizadores de state dos inputs
@@ -21,6 +22,7 @@ class WimapeLogin extends React.Component {
     }
     
     handleSubmit(event) { //função para processar o submit do form de login
+        //checa id do form
         api.get(`/search`, { //axios api para BD
             params: {
                 user: this.state.user //procura apenas o usuario e retorna todos os campos do documento
@@ -51,14 +53,8 @@ class WimapeLogin extends React.Component {
         event.preventDefault();
     }
 
-    handleLogin(){        
-        console.log(this.state.status)
-        if(this.state.status === false){ //boolean login test
-            console.log("erro de login");
-            this.setState({erroMsg: "Usuário e/ou Senha incorreto(s)"});
-        } else{            
-            document.getElementsByClassName("error")[0].style.color="lightblue";
-        }
+    handleSignUp(){ 
+        this.props.history.push('/cadastro'); //força o caminho para o history
     }
 
     render() {
@@ -87,11 +83,12 @@ class WimapeLogin extends React.Component {
             autoComplete="off"/>  
 
             <div className="content-button-holder">
-                <button className="content-button" type="submit">Entrar</button>
-                <button className="content-button" type="submit">Cadastrar</button>
+                <button className="content-button" type="submit" >Entrar</button>
+                <button className="content-button" type="button" onClick={this.handleSignUp}>Cadastrar</button>
+
             </div>            
         </div>
-        <a className="error" href="/">{this.state.erroMsg}</a>
+        <a href="/" className="error">{this.state.erroMsg}</a>
         </form>
     )}
 }
