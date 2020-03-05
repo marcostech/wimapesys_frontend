@@ -1,9 +1,8 @@
 import React from 'react'
 //import api from "./services/api"
-import logo from "./images/luffe.png"
+import logo from "./images/logo.png"
 import './App.css';
 import Main from "./Main"
-import Navigation from "./Navigation"
 
 
 
