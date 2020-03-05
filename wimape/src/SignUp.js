@@ -9,9 +9,11 @@ class WimapeLogin extends React.Component {
             user: "", //state do user input
             password: "", //state do password input
             email: "", //state do password input
+            setor: "",
+            admin: false,
             passwordCheck: "", //state do Check de password input
             erroMsg: "", //state para mensagens de erro
-            status: false //state de login status check
+            
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); //binds para usar a this nas funções
@@ -24,25 +26,29 @@ class WimapeLogin extends React.Component {
     }
     
     handleSubmit(event) { //função para processar o submit do form de cadastro
-        api.post(`/monos`, { //axios api para BD
-            params: {
-                user: this.state.user, // campo de usuario
-                password: this.state.password, //campo de senha
-                email: this.state.email //campo de email
-            }
-        }).then(response =>{ 
-            console.log(response.data)           
-        }).catch(err => { //pega os erros do Banco de dados
-            this.setState({erroMsg:"check this -> "+err}); //troca state da msg de erro
-            this.setState({status: false}) //altera state do check cadastro
-            document.getElementsByClassName("error")[0].style.color="red"; //altera cor do texto de erro
-            });
+        if(this.state.password===this.state.passwordCheck){
+            api.post(`/cadastro`, { //axios api para BD
+                    user: this.state.user, // campo de usuario
+                    password: this.state.password, //campo de senha
+                    email: this.state.email, //campo de email
+                    setor: this.state.setor, //campo de setor
+                    admin: this.state.admin, //campo de admin
+                
+            }).then(response =>{ 
+                alert(response.data.mensagem);   
+                if(response.data.statusCreated===true){this.props.history.push('/')}  //redirecionador se user criado
+            }).catch(err => { //pega os erros do Banco de dados
+                this.setState({erroMsg:"check this -> "+err}); //troca state da msg de erro
+                document.getElementsByClassName("error")[0].style.color="red"; //altera cor do texto de erro
+                });
+        }else{
+            alert("Senhas diferem, tente novamente!");
+            document.getElementsByName("passwordCheck")[0].style.color="red";
+            document.getElementsByName("password")[0].style.color="red";
+        };
         event.preventDefault();
-
-
-        alert("cadastro efetuado");
-        this.props.history.push('/');
     }
+
     handleGoBack(){ 
         this.props.history.push('/'); //força o caminho para o history
     }
@@ -60,7 +66,10 @@ class WimapeLogin extends React.Component {
             className="input-style"
             type="text"
             placeholder="Nome de Usuario"
-            autoComplete="off"/>
+            autoComplete="off"
+            maxLength="10"
+            pattern="[A-Za-z]{1,10}"
+            title="Somente letras, máximo 10 Caracteres"/>
 
             <input
             required
@@ -70,7 +79,8 @@ class WimapeLogin extends React.Component {
             className="input-style"
             type="password"
             placeholder="Senha"
-            autoComplete="off"/> 
+            autoComplete="off"
+            maxLength="10"/> 
 
             <input
             required
@@ -80,7 +90,8 @@ class WimapeLogin extends React.Component {
             className="input-style"
             type="password"
             placeholder="Repetir Senha"
-            autoComplete="off"/>
+            autoComplete="off"
+            maxLength="10"/>
 
             <input
             required
@@ -91,6 +102,17 @@ class WimapeLogin extends React.Component {
             type="email"
             placeholder="Email"
             autoComplete="off"/>
+
+            <input
+            required
+            onChange={this.handleChange}
+            value={this.state.setor}
+            name="setor"
+            className="input-style"
+            type="text"
+            placeholder="Setor"
+            autoComplete="off"
+            maxLength="10"/>
 
             <div className="content-button-holder">                
                 <button className="content-button" type="submit">Cadastrar</button>                
