@@ -1,3 +1,9 @@
+/*Componente de cadastro funcional, consegue validar se ja possui usuario com mesmo nome,
+    se a senha esta igual e limita os caracteres para uso nos inputs.
+    Consegue responder com mensagens de erro e não trava se houver falha no Banco ou no App
+*/
+
+
 import React from "react"
 import "./WimapeLogin.css"
 import api from "./services/api"
@@ -9,8 +15,8 @@ class WimapeLogin extends React.Component {
             user: "", //state do user input
             password: "", //state do password input
             email: "", //state do password input
-            setor: "",
-            admin: false,
+            setor: "", //state do setor input
+            admin: false, //state admin para uso posterior, padrao falso
             passwordCheck: "", //state do Check de password input
             erroMsg: "", //state para mensagens de erro
             
